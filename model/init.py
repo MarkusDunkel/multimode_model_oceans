@@ -118,7 +118,7 @@ class MetaData:
         
         '''
         load_scenario = True
-        scenario_name = 'NlE'
+        scenario_name = 'LW'
         if load_scenario: 
             self.__dict__ = scenarios.load(scenario_name)
               

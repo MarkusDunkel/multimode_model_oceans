@@ -10,7 +10,7 @@ import ray
 import init
 import domain as do
 import makefile as mf
-import model_functions as mfunc
+import schedule_functions as mfunc
 import time
 import numpy as np
 import variables as var
