@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -q clexpress                      # Batchklasse: clexpress, clmedium, cllong, clbigmem, clfo2, feque   
+#PBS -b 1                          # Anzahl der Knoten (hier: 1 Knoten) 
+#PBS -l cpunum_job=32               # angeforderte Coreanzahl pro Knoten (max. 16, hier: 1 Core) 
+#PBS -l elapstim_req=01:00:00       # Rechenzeit (Walltime)
+#PBS -l memsz_job=60gb             # angeforderter Hauptspeicher pro Knoten (max. 128 GB bzw. 256GB (clbigmem))
+#PBS -N multimode_model                     # Jobname 
+#PBS -j o                          # Standard- und Fehlerausgabe in eine Datei
+#PBS -o ../rep.out                 # Name der Standardausgabedatei
+#
+
+# Wechsel in das Arbeitsverzeichnis, aus dem qsub-Kommando abgesetzt wurde
+cd $PBS_O_WORKDIR
+
+module load python3.6.2
+
+hostname
+
+python3 run.py
+
+
+
+
+# Ausgabe von genutzten Ressourcen während der Berechnung
+/usr/bin/nqsII/qstat -f ${PBS_JOBID/0:/}
+
